@@ -3,7 +3,7 @@ TravelTripper::Application.routes.draw do
     get '/users/sign_in' => 'devise/sessions#new'
   end
 
-  resources :contents, only: [:new, :create]
+  resources :contents
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -62,5 +62,5 @@ TravelTripper::Application.routes.draw do
   #   end
   
 
-  root :to =>'home#index'
+  root :to =>'contents#index'
 end
