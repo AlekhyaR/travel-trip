@@ -1,0 +1,19 @@
+<div>
+  <% if user_signed_in? %>
+    <div id="main">
+      <h2>You have succesfully signed in.</h2>
+        <h4> Please click on Change Content link to impact styling to that page</h4>
+          <% if current_user.content.blank? %>
+            <%= link_to "Change Content", new_content_path, id: 'change_content','data-no-turbolink' =>'true' %>
+          <% else %>
+            <%= link_to "Edit Content", edit_content_path(:id => current_user.content.id), id: 'change_content','data-no-turbolink' =>'true' %>
+          <% end %>
+          <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+    </div>
+  <% else %>
+    <h1> Welcome to Change Style</h1>
+    <%= link_to "Sign In", new_user_session_path, :method => :get %>
+    <%= link_to "Sign up", new_user_registration_path, :method => :get %>
+  <% end %>              
+</div>
+

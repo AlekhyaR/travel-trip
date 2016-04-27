@@ -1,0 +1,15 @@
+<%= form_for @content, html: {:id => "content_form", class: 'form-horizontal'} do |f| %>
+  <% @content.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+  <%= f.label :title, 'Enter Title' %>
+  <%= f.text_field :title, required: true %></br></br>
+  <%= f.label :color %>
+  <%= f.text_field :color, :class => "jscolor", value: "#{get_updated_color}", required: true %></br></br>
+  <%= f.label :font %>
+  <%= f.text_field :font, id: "font", required: true %></br></br>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.submit %>
+<% end %>
+
+

@@ -1,0 +1,22 @@
+<script type='text/javascript' >
+  $(document).on('ready page:load', function(){
+    $(function(){
+      $('#font').fontselect().change(function(){
+        // replace + signs with spaces for css
+        var font = $(this).val().replace(/\+/g, ' ');
+        // split font into family and weight
+        font = font.split(':');
+        // set family on paragraphs
+        $('label,input,p').css('font-family', font[0]);
+      });
+    });
+    var fontVal = $('.font-select a span').text();
+    $('label,input,p').css('font-family', fontVal);
+  });
+</script>
+<p>Title: <%= current_user.content.title %><p>
+<% if @content.errors.any? %>
+  <%= @content.errors.full_messages %>
+<% else %>
+  <%= render :partial => "form" %>
+<% end %>
