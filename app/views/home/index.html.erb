@@ -1,0 +1,16 @@
+<body bgcolor="red">
+  <%= yield :custom_color %>
+  <%= yield :custom_font %>
+  <%= yield :custom_title %>
+<div style="width:100%;background-color: <%= custom_color %>;font-family:<%= custom_font %>;">
+  <% if user_signed_in? %>
+    <h3>you have succesfully signed in</h3>
+    <%= link_to "Change Content", new_content_path %>
+    <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <h1> welcome to rails community</h1>
+    <%= link_to "Sign In", new_user_session_path, :method => :get %>
+    <%= link_to "Sign up", new_user_registration_path, :method => :get %>
+  <% end %>              
+</div>
+</body>
